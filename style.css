@@ -1,0 +1,274 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    /* I wish i had learned about this sooner, literally fixes so many issues I had with layouts in the past*/
+}
+
+body {
+    --navbar-size: 10vh;
+    --grey: rgba(50, 53, 60, 1);
+    --dark-grey: rgba(25, 26.5, 30, 1);
+    --accent: #ff7f44;
+    /*rgba(250, 142, 0, 1);*/
+    --secondary: rgba(57, 57, 80);
+    /*hsl(25,60%,42%);/*rgba(50,57,75)*/
+    /*#46c6f4;*/
+    --white: #f0f0f0;
+    --black: rgba(20, 20, 20, 1);
+
+    font-family: poppins, arial;
+    background-color: var(--grey);
+}
+
+#welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(-37deg, var(--dark-grey), var(--grey));
+}
+
+#title {
+    position: relative;
+    bottom: 100%;
+    animation-name: fall-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.1, 0.6, 0.15, 1);
+
+    text-shadow: 0px 100vh 150px black;
+    color: var(--white);
+    display: block;
+    font-family: ubuntu, arial, monospace;
+    font-size: 5rem;
+}
+
+@keyframes fall-in {
+    100% {
+        bottom: 0%;
+        text-shadow: 0px 0px 0px black;
+    }
+}
+
+#subtitle {
+    position: relative;
+    opacity: 0%;
+    color: var(--accent);
+    font-family: "roboto mono", monospace;
+    font-size: 1.5rem;
+
+    animation-name: fade-in;
+    animation-duration: 4.2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.1, 0.6, 0.15, 1);
+}
+
+@keyframes fade-in {
+    25% {
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+#navbar {
+    z-index: 10;
+    /*I wanted the HTML for the navbar to be at the top, since thats where the navbar goes, but that makes it necessary to do this*/
+    position: fixed;
+    top: -8vh;
+    width: 100%;
+
+    border-width: 0 0 3px 0;
+    border-color: var(--accent);
+    border-style: solid;
+
+    box-shadow: 0 0 2vh 0 black;
+
+    display: flex;
+    flex-direction: row-reverse;
+
+    background-color: var(--black);
+
+    transition: top 0.15s;
+}
+
+#navbar:hover {
+    top: 0vh;
+}
+
+.link-wrap,
+.link-wrap:visited {
+    text-decoration: none;
+    color: var(--white);
+    align-self: center;
+    line-height: var(--navbar-size);
+    font-size: 1.3em;
+    padding: 0 60px 0 60px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.link-wrap:hover {
+    background-color: var(--accent);
+    color: var(--black);
+}
+
+#projects {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: var(--secondary);
+}
+
+#projects-header h1 {
+    font-family: ubuntu;
+    text-align: center;
+    color: var(--white);
+}
+
+#projects-wrapper {
+    position: relative;
+    margin: 60px auto 0px auto;
+    width: 95%;
+
+    display: grid;
+    grid-gap: 30px;
+    grid-template-rows: 1fr 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /*background-color: orange;*/
+}
+
+.project-tile {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /*background-color: red;*/
+}
+
+img {
+    /*This technique for cropping the images to fit their containing blocks came from freeCodeCamp's example portfolio page*/
+    display: block;
+    height: calc(100% - 4rem);
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-description {
+    font-family: poppins;
+    font-size: 1rem;
+    color: var(--white);
+    text-align: center;
+    background-color: var(--dark-grey);
+    line-height: 4rem;
+    border-radius: 0 0 6px 6px;
+}
+
+#profile-link,
+#profile-link:visited {
+    text-decoration: none;
+    border-radius: 6px;
+    display: block;
+    width: 140px;
+    margin: 0 auto;
+    color: var(--white);
+    background-color: var(--dark-grey);
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 3rem;
+
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#profile-link:hover {
+    background-color: var(--accent);
+    color: var(--black);
+}
+
+#contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    height: 100vh;
+}
+
+#title2 {
+    color: var(--white);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 4rem;
+}
+
+#subtitle2 {
+    color: var(--white);
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+form {
+    display: flex;
+    width: 80%;
+    max-width: 500px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+    /*background-color: orange;*/
+}
+
+#email,
+#submit,
+#text-area {
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-top: 10px;
+    background-color: var(--white);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-width: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 500px;
+}
+
+#text-area {
+    height: 80px;
+    min-height: 80px;
+    min-width: 100%;
+    max-height: 450px;
+
+    font-family: arial;
+    line-height: 1.2rem;
+}
+
+#text-area:focus {
+    height: 200px;
+}
+
+#submit {
+    align-self: flex-end;
+    width: 100px;
+}
+
+#submit:hover {
+    background-color: var(--accent);
+}
+
+@media only screen and (max-width: 1000px) {
+    #projects-wrapper {
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr auto;
+        grid-template-columns: 1fr;
+    }
+
+    #navbar {
+        top: 0px;
+    }
+}
